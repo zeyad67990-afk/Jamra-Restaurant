@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جمرة — مشويات وكباب</title>
+  <link rel="icon" href="logo.png" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav id="navbar">
+  <div class="nav-inner">
+
+    <a href="#home" class="nav-logo">
+      <img src="jamra_logo_svg.svg" alt="جمرة">
+      <span class="nav-logo-text logo-text">جمرة</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 21V12h6v9"/></svg>
+        <span class="nav-label" data-ar="الرئيسية" data-en="Home">الرئيسية</span>
+      </a></li>
+      <li><a href="#about-section">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4m0 4h.01"/></svg>
+        <span class="nav-label" data-ar="عنّا" data-en="About">عنّا</span>
+      </a></li>
+      <li><a href="#menu-section">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v6c0 1.66 1.34 3 3 3s3-1.34 3-3V3"/><line x1="6" y1="12" x2="6" y2="21"/><path d="M15 3c0 0 3 2 3 8h-6c0-6 3-8 3-8z"/><line x1="15" y1="11" x2="15" y2="21"/></svg>
+        <span class="nav-label" data-ar="القائمة" data-en="Menu">القائمة</span>
+      </a></li>
+      <li><a href="#contact-section">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.09 4.18 2 2 0 015.07 2h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L9.09 9.91a16 16 0 006.99 7l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg>
+        <span class="nav-label" data-ar="تواصل" data-en="Contact">تواصل</span>
+      </a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <button class="ctrl-btn" onclick="toggleTheme()" aria-label="theme">
+        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="icon-moon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+        <span id="theme-label">فاتح</span>
+      </button>
+      <button class="ctrl-btn" onclick="toggleLang()" aria-label="language">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <span id="lang-label">EN</span>
+      </button>
+    </div>
+
+    <button class="burger-btn" id="burger-btn" onclick="toggleDrawer()">
+      <svg id="burger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <a href="#home" onclick="closeDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 21V12h6v9"/></svg>
+      <span class="nav-label" data-ar="الرئيسية" data-en="Home">الرئيسية</span>
+    </a>
+    <a href="#about-section" onclick="closeDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4m0 4h.01"/></svg>
+      <span class="nav-label" data-ar="عنّا" data-en="About">عنّا</span>
+    </a>
+    <a href="#menu-section" onclick="closeDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v6c0 1.66 1.34 3 3 3s3-1.34 3-3V3"/><line x1="6" y1="12" x2="6" y2="21"/><path d="M15 3c0 0 3 2 3 8h-6c0-6 3-8 3-8z"/><line x1="15" y1="11" x2="15" y2="21"/></svg>
+      <span class="nav-label" data-ar="القائمة" data-en="Menu">القائمة</span>
+    </a>
+    <a href="#contact-section" onclick="closeDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.09 4.18 2 2 0 015.07 2h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L9.09 9.91a16 16 0 006.99 7l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg>
+      <span class="nav-label" data-ar="تواصل" data-en="Contact">تواصل</span>
+    </a>
+    <div class="drawer-divider"></div>
+    <div class="drawer-controls">
+      <button class="ctrl-btn" onclick="toggleTheme()">
+        <svg id="icon-sun-m" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="icon-moon-m" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+        <span id="theme-label-m">فاتح</span>
+      </button>
+      <button class="ctrl-btn" onclick="toggleLang()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <span id="lang-label-m">EN</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="home" style="padding-top:68px;">
+  <div class="section" style="padding-top:60px;padding-bottom:60px;max-width:1200px;">
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <div class="hero-eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 0-4 4-4 9a4 4 0 008 0c0-5-4-9-4-9z"/></svg>
+          <span class="eyebrow-text" data-ar="مشويات وكباب على الجمر الحي" data-en="Authentic Charcoal & Grill">مشويات وكباب على الجمر الحي</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-title-line1" data-ar="مرحباً بكم في" data-en="Welcome to">مرحباً بكم في</span><br>
+          <span class="gold logo-text">جمرة</span>
+          <span class="hero-title-line2" data-ar=" — مطعم الأصالة" data-en=" — The Authentic Grill"> — مطعم الأصالة</span>
+        </h1>
+
+        <p class="hero-desc hero-desc-text" data-ar="نقدم لكم أشهى المشويات والكباب المطهو على الفحم الطبيعي، بأيدي أمهر الطهاة وأجود الخامات." data-en="We serve the finest grilled meats and kebabs cooked over natural charcoal, prepared by skilled chefs with premium ingredients.">
+          نقدم لكم أشهى المشويات والكباب المطهو على الفحم الطبيعي، بأيدي أمهر الطهاة وأجود الخامات.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">+500</span>
+            <span class="stat-lbl stat-text" data-ar="وجبة يومياً" data-en="Daily Orders">وجبة يومياً</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">4.9 ★</span>
+            <span class="stat-lbl stat-text" data-ar="تقييم العملاء" data-en="Customer Rating">تقييم العملاء</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">+10</span>
+            <span class="stat-lbl stat-text" data-ar="سنوات خبرة" data-en="Years of Experience">سنوات خبرة</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#menu-section" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v6c0 1.66 1.34 3 3 3s3-1.34 3-3V3"/><line x1="6" y1="12" x2="6" y2="21"/><path d="M15 3c0 0 3 2 3 8h-6c0-6 3-8 3-8z"/><line x1="15" y1="11" x2="15" y2="21"/></svg>
+            <span data-ar="شوف المنيو" data-en="See Menu">شوف المنيو</span>
+          </a>
+          <a href="#contact-section" class="btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.95-1.57l1.65-7.43H6"/></svg>
+            <span data-ar="اطلب توصيل" data-en="Order Delivery">اطلب توصيل</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-images">
+        <img src="img-1.jpg" alt="مشويات جمرة" class="hero-img-main">
+        <img src="img-2.jpg" alt="فراخ مشوية" class="hero-img-sub">
+        <button class="order-badge" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.95-1.57l1.65-7.43H6"/></svg>
+          <span class="badge-text" data-ar="اطلب الآن" data-en="Order Now">اطلب الآن</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about-section">
+  <div class="about-grid">
+
+    <div class="about-img-wrap">
+      <img src="img-2.jpg" alt="جمرة مطعم">
+      <div class="about-badge">
+        <strong>+10</strong>
+        <span class="about-badge-text" data-ar="سنوات من الأصالة" data-en="Years of Authenticity">سنوات من الأصالة</span>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <div class="section-header" style="text-align:right;margin-bottom:20px;">
+        <div class="section-tag about-tag" data-ar="من نحن" data-en="About Us">من نحن</div>
+        <h2 class="section-title about-title" data-ar="قصة جمرة" data-en="The Jamra Story">قصة جمرة</h2>
+      </div>
+      <p class="about-p1" data-ar="بدأت جمرة رحلتها منذ أكثر من عشر سنوات بحب حقيقي للطعام الأصيل. نؤمن بأن سر الطعام الشهي يكمن في الجمر الحقيقي والتتبيلة المميزة." data-en="Jamra began its journey over ten years ago with a genuine love for authentic food. We believe the secret to great taste lies in real charcoal and our signature marinade.">
+        بدأت جمرة رحلتها منذ أكثر من عشر سنوات بحب حقيقي للطعام الأصيل. نؤمن بأن سر الطعام الشهي يكمن في الجمر الحقيقي والتتبيلة المميزة.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 0-4 4-4 9a4 4 0 008 0c0-5-4-9-4-9z"/></svg>
+          </div>
+          <div>
+            <div class="feature-title f1-title" data-ar="جمر طبيعي" data-en="Natural Charcoal">جمر طبيعي</div>
+            <div class="feature-desc f1-desc" data-ar="نطهو على الفحم الحجري فقط" data-en="We cook only on natural charcoal">نطهو على الفحم الحجري فقط</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div>
+            <div class="feature-title f2-title" data-ar="مكونات طازجة" data-en="Fresh Ingredients">مكونات طازجة</div>
+            <div class="feature-desc f2-desc" data-ar="كل يوم طازج من أفضل الموردين" data-en="Fresh daily from the best suppliers">كل يوم طازج من أفضل الموردين</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div>
+            <div class="feature-title f3-title" data-ar="توصيل سريع" data-en="Fast Delivery">توصيل سريع</div>
+            <div class="feature-desc f3-desc" data-ar="وصول طلبك ساخناً في أقل من ٤٥ دقيقة" data-en="Your order arrives hot in under 45 minutes">وصول طلبك ساخناً في أقل من ٤٥ دقيقة</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div>
+            <div class="feature-title f4-title" data-ar="جودة مضمونة" data-en="Quality Guaranteed">جودة مضمونة</div>
+            <div class="feature-desc f4-desc" data-ar="تقييم 4.9 من آلاف العملاء" data-en="4.9 rating from thousands of customers">تقييم 4.9 من آلاف العملاء</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section id="menu-section">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag menu-tag" data-ar="قائمة الطعام" data-en="Our Menu">قائمة الطعام</div>
+      <h2 class="section-title menu-title" data-ar="أشهى الأطباق" data-en="Our Finest Dishes">أشهى الأطباق</h2>
+      <p class="section-sub menu-sub" data-ar="كل طبق مطهو على الجمر الحي بتتبيلة جمرة السرية" data-en="Every dish cooked over live charcoal with Jamra's secret marinade">كل طبق مطهو على الجمر الحي بتتبيلة جمرة السرية</p>
+    </div>
+    <div id="preview-container" class="menu-grid"></div>
+    <div style="text-align:center;margin-top:36px">
+      <a href="menue.html" class="btn-primary" style="display:inline-flex">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M3 3v6c0 1.66 1.34 3 3 3s3-1.34 3-3V3"/><line x1="6" y1="12" x2="6" y2="21"/><path d="M15 3c0 0 3 2 3 8h-6c0-6 3-8 3-8z"/><line x1="15" y1="11" x2="15" y2="21"/></svg>
+        <span data-ar="عرض المنيو كامل" data-en="View Full Menu">عرض المنيو كامل</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact-section">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag contact-tag" data-ar="تواصل معنا" data-en="Get in Touch">تواصل معنا</div>
+      <h2 class="section-title contact-title" data-ar="اطلب أو تواصل" data-en="Order or Contact Us">اطلب أو تواصل</h2>
+      <p class="section-sub contact-sub" data-ar="هنوصلهولك ساخن على بابك" data-en="We'll deliver it hot to your door">هنوصلهولك ساخن على بابك</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.09 4.18 2 2 0 015.07 2h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L9.09 9.91a16 16 0 006.99 7l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="info-label info-l1" data-ar="تليفون" data-en="Phone">تليفون</div>
+            <div class="info-value">0237621250</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="info-label info-l2" data-ar="العنوان" data-en="Address">العنوان</div>
+            <div class="info-value info-addr" data-ar="شارع إيران، الدقي، القاهرة" data-en="Iran St., Dokki, Cairo">شارع إيران، الدقي، القاهرة</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div>
+            <div class="info-label info-l3" data-ar="ساعات العمل" data-en="Working Hours">ساعات العمل</div>
+            <div class="info-value info-hours" data-ar="١٢ ظهراً — ١٢ منتصف الليل" data-en="12 PM — 12 AM">١٢ ظهراً — ١٢ منتصف الليل</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </div>
+          <div>
+            <div class="info-label info-l4" data-ar="نطاق التوصيل" data-en="Delivery Range">نطاق التوصيل</div>
+            <div class="info-value info-range" data-ar="حتى ٥ كم من الفرع" data-en="Up to 5km from branch">حتى ٥ كم من الفرع</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-form-wrap">
+        <h3 class="form-title form-title-text" data-ar="اطلب توصيل" data-en="Order Delivery">اطلب توصيل</h3>
+        <p class="form-sub form-sub-text" data-ar="ادخل بياناتك وهنتصل بيك خلال دقائق" data-en="Enter your details and we'll call you within minutes">ادخل بياناتك وهنتصل بيك خلال دقائق</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="lbl-name" data-ar="الاسم" data-en="Name">الاسم</label>
+            <input type="text" id="f-name" placeholder="اسمك الكريم">
+          </div>
+          <div class="form-group">
+            <label class="lbl-phone" data-ar="رقم التليفون" data-en="Phone Number">رقم التليفون</label>
+            <input type="tel" id="f-phone" placeholder="01x xxxx xxxx">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="lbl-addr" data-ar="العنوان" data-en="Address">العنوان</label>
+          <input type="text" id="f-addr" placeholder="شارع، حي، مدينة">
+        </div>
+        <div class="form-group">
+          <label class="lbl-order" data-ar="اختار من المنيو" data-en="Choose from Menu">اختار من المنيو</label>
+          <select id="f-order">
+            <option value="" data-ar="— اختار —" data-en="— Choose —">— اختار —</option>
+            <option value="mixed" data-ar="مشويات مشكلة" data-en="Mixed Grill">مشويات مشكلة</option>
+            <option value="kofta" data-ar="كفتة + أرز" data-en="Kofta + Rice">كفتة + أرز</option>
+            <option value="kebab" data-ar="كباب حلة" data-en="Pot Kebab">كباب حلة</option>
+            <option value="chicken" data-ar="فراخ مشوية" data-en="Grilled Chicken">فراخ مشوية</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="lbl-notes" data-ar="ملاحظات" data-en="Notes">ملاحظات</label>
+          <textarea id="f-notes" placeholder="أي طلبات خاصة؟"></textarea>
+        </div>
+        <button class="form-submit" onclick="submitOrder()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.95-1.57l1.65-7.43H6"/></svg>
+          <span class="submit-text" data-ar="أرسل الطلب" data-en="Submit Order">أرسل الطلب</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.png" alt="جمرة">
+      <span class="logo-text">جمرة</span>
+    </div>
+    <p class="footer-copy" data-ar="© 2025 مطعم جمرة — مشويات وكباب على الجمر الحي" data-en="© 2025 Jamra Restaurant — Authentic Charcoal & Grill">© 2025 مطعم <strong>جمرة</strong> — مشويات وكباب على الجمر الحي</p>
+  </div>
+</footer>
+
+<!-- ============ CART FLOAT ============ -->
+<button class="cart-float" id="cart-float" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.95-1.57l1.65-7.43H6"/></svg>
+  <span class="cart-text" data-ar="طلبك" data-en="Your Order">طلبك</span>
+  <div class="cart-badge" id="cart-count">0</div>
+</button>
+
+<!-- ============ SCRIPT ============ -->
+<script src="app.js"></script>
+
+</body>
+</html>
